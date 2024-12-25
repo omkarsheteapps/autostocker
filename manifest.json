@@ -6,7 +6,8 @@
     "permissions": ["storage", "scripting", "activeTab"],
     "host_permissions": ["https://www.angelone.in/trade/watchlist/*", "https://kite.zerodha.com/*"],
     "action": {
-      "default_popup": "popup.html"
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
     }
   }
   
