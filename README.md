@@ -52,6 +52,5 @@ _Last Updated: 25-12-2024
 
 This extension, **AutoStocker**, does not collect, store, or share any personal user data. All operations are performed locally on the user's device, and no information is transmitted to external servers or third parties.
 
-If you have any questions or concerns regarding this privacy policy, feel free to contact us at [Your Email or Contact Information].
-
+If you have any questions or concerns regarding this privacy policy, feel free to contact us at believekiddo@gmail.com
 ---
