@@ -1,26 +1,46 @@
-AutoStocker
 
-1.Run a Chartink Scanner:
+# AutoStocker
 
-Navigate to your Chartink Scanner page.
-If you already have a scanner, run it to display the desired stock results.
+**AutoStocker** is a browser extension that simplifies the process of managing stock watchlists across popular platforms like **Angel One** and **Kite**. With AutoStocker, you can copy stock symbols from a **Chartink Scanner** and seamlessly add them to your trading watchlist.
 
-2.Locate the "Copy to TradingView" Button:
+---
 
-Once the results are visible, find the Copy to TradingView button located above the table.
-Click the button to copy all stock symbols from the scanner to your clipboard.
+## Steps to Use AutoStocker with Chartink Scanner
 
-3.Open AutoStocker Extension:
+### 1. Run a Chartink Scanner
+- Open the [Chartink Scanner](https://chartink.com/) in your browser.
+- Run your desired scanner to display a list of stock results.
 
-Open your browser and click on the AutoStocker extension icon in the toolbar.
+### 2. Locate the "Copy to TradingView" Button
+- After the scanner results are displayed, look for the **Copy to TradingView** button above the stock table.
+- Click this button to copy all stock symbols to your clipboard.
 
-4.Paste the Copied Symbols:
+### 3. Open the AutoStocker Extension
+- Click on the **AutoStocker** extension icon in your browser's toolbar.
 
-In the AutoStocker extension popup:
-Locate the text area labeled "Paste stock symbols here...".
-Paste the stock symbols you copied from Chartink into this area.
+### 4. Paste the Copied Symbols
+- In the extension popup:
+  - Locate the text area labeled **"Paste stock symbols here..."**.
+  - Paste the stock symbols you copied from Chartink.
 
-5.Click "Add Stocks to Watchlist":
+### 5. Click "Add Stocks to Watchlist"
+- After pasting the stock symbols, click the **"Add Stocks to Watchlist"** button.
+- AutoStocker will process the stock symbols and add them to your watchlist on the currently active platform (Angel One or Kite).
 
-After pasting the symbols, click the "Add Stocks to Watchlist" button.
-The extension will automatically process the stock symbols and add them to your watchlist based on the platform (Angel One or Kite).
+---
+
+## Notes
+- Make sure the stock symbols are in the correct format:
+  - **Angel One**: Symbols without `NSE:` (e.g., `TATASTEEL`).
+  - **Kite**: Symbols prefixed with `NSE:` (e.g., `NSE:TATASTEEL`).
+- If symbols are not formatted correctly, the extension will automatically adjust them based on the platform.
+
+---
+
+## Example Use Case
+- **Scenario**: You want to add stock symbols from a Chartink Scanner to your watchlist on Kite.
+1. Run a Chartink Scanner and click **Copy to TradingView**.
+2. Open the AutoStocker extension and paste the copied symbols.
+3. Click **Add Stocks to Watchlist**, and the extension will handle the rest.
+
+---
