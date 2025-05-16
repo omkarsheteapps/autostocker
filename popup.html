@@ -1,69 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chartink to Watchlist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AutoStocker</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 10px;
-      width: 260px;
-      background-color: #f4f4f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 12px;
+      width: 280px;
+      background: #f9fafb;
       color: #333;
-      text-align: center;
     }
+
     h3 {
-      font-size: 16px;
-      color: #2c3e50;
-      margin-bottom: 10px;
-      line-height: 1.4;
+      font-size: 18px;
+      font-weight: 600;
+      color: #1e293b;
+      text-align: center;
+      margin-bottom: 14px;
     }
-    textarea {
-      width: calc(100% - 16px);
-      height: 80px;
+
+    .tab-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .tab-button {
+      flex: 1;
+      margin: 0 3px;
       padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: #fff;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-      resize: none;
-      transition: all 0.3s ease;
+      font-size: 15px;
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.25s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     }
-    textarea:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
-    button {
-      margin-top: 10px;
-      width: 100%;
-      padding: 10px 0;
-      font-size: 14px;
-      font-weight: bold;
+
+    .tab-button.active {
+      background-color: #3b82f6;
       color: #fff;
-      background-color: #3498db;
+      font-weight: 600;
+    }
+
+    .section {
+      display: none;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .main-button {
+      width: 100%;
+      background-color: #3b82f6;
+      color: #fff;
       border: none;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 600;
       border-radius: 6px;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      transition: 0.25s ease;
     }
-    button:hover {
-      background-color: #2980b9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    .main-button:hover {
+      background-color: #2563eb;
     }
-    button:active {
-      background-color: #1e6b96;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .sub-button-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .sub-button {
+      flex: 1;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .sub-button:hover {
+      background-color: #e2e8f0;
+    }
+
+    #riskResult {
+      font-weight: 600;
+      color: #1f2937;
+      margin-top: 8px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h3>Enter Stock Symbols to Add<br>to Your Trading Watchlist</h3>
-  <textarea id="stockSymbols" placeholder="Paste stock symbols here..."></textarea>
-  <button id="addStocksButton">Add Stocks to Watchlist</button>
+  <h3>AutoStocker</h3>
+
+  <div class="tab-buttons">
+    <button id="watchlistTab" class="tab-button active">📈</button>
+    <button id="riskTab" class="tab-button">⚖️</button>
+    <button id="hotTab" class="tab-button">🔥</button>
+  </div>
+
+  <!-- Watchlist Section -->
+  <div id="watchlistSection" class="section" style="display: block;">
+    <textarea id="stockSymbols" placeholder="Paste stock symbols here..."></textarea>
+    <button id="addStocksButton" class="main-button">Add Stocks to Watchlist</button>
+  </div>
+
+  <!-- Risk Management Section -->
+  <div id="riskSection" class="section">
+    <input type="number" id="capital" placeholder="Total Capital (₹)" />
+    <input type="number" id="riskPercent" placeholder="Risk % per trade" />
+    <input type="number" id="stopLoss" placeholder="Stop Loss Distance (₹)" />
+    <button id="calculateRisk" class="main-button">Calculate Position Size</button>
+    <p id="riskResult"></p>
+  </div>
+
+  <!-- Hot Stocks Section -->
+  <div id="hotSection" class="section">
+    <div class="sub-button-group">
+      <button id="fetchTopLosers" class="sub-button">🔻 Top Losers</button>
+      <button id="fetchTopGainers" class="sub-button">🔺 Top Gainers</button>
+    </div>
+  </div>
+
+  <div style="
+  margin-top: 20px;
+  background-color: #fef3c7;
+  border: 1px solid #fcd34d;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+  color: #92400e;
+">
+  <strong>Got ideas or feedback?</strong><br />
+  Help us improve AutoStocker by suggesting features or reporting issues.
+  <div style="margin-top: 8px;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeF6l3TeVyyhcxFmz8JAPmJGHog6JLDQOK19U5gEHBuu-MCtw/viewform?usp=header" target="_blank" style="
+      color: #b45309;
+      font-weight: 600;
+      text-decoration: underline;
+    ">
+      Submit Feedback →
+    </a>
+  </div>
+</div>
+
   <script src="popup.js"></script>
 </body>
 </html>

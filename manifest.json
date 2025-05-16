@@ -1,13 +1,25 @@
 {
-    "manifest_version": 3,
-    "name": "Chartink to watchlist",
-    "version": "1.0.0",
-    "description": "Add stocks from Chartink to Zerodha Kite & Angel One watchlist from the extension.",
-    "permissions": ["storage", "scripting", "activeTab"],
-    "host_permissions": ["https://www.angelone.in/trade/watchlist/*", "https://kite.zerodha.com/*"],
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": "icon.png"
+  "manifest_version": 3,
+  "name": "Chartink to watchlist",
+  "version": "1.0.1",
+  "description": "Add stocks from Chartink to Zerodha Kite & Angel One watchlist from the extension.",
+  "permissions": ["storage", "scripting", "activeTab"],
+  "host_permissions": [
+    "https://www.angelone.in/trade/watchlist/*",
+    "https://kite.zerodha.com/*",
+    "https://groww.in/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icon.png"],
+      "matches": ["<all_urls>"]
     }
-  }
-  
+  ]
+}
